@@ -3,7 +3,7 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bankGradient: #0179FE;
+  --color-bank-gradient: #0179FE;
 
   --color-gray-25: #FCFCFD;
   --color-gray-200: #EAECF0;
@@ -67,6 +67,36 @@
 }
 
 @layer components {
+  
+  /* Footer */
+  .footer {
+    @apply flex cursor-pointer
+           items-center justify-between
+           gap-2 py-6;
+  }
+
+  .footer_name,
+  .footer_name-mobile {
+    @apply flex size-10 items-center
+           justify-center rounded-full bg-gray-200;
+  }
+
+  .footer_email,
+  .footer_email-mobile {
+    @apply flex flex-1 flex-col justify-center;
+  }
+
+  .footer_name,
+  .footer_email {
+    @apply max-xl:hidden;
+  }
+
+  .footer_image {
+    @apply relative size-5
+           max-xl:flex max-xl:w-full
+           max-xl:items-center max-xl:justify-center;
+  }
+  
   /* Headers */
   .header-2 {
     @apply text-18 font-semibold text-gray-900;
@@ -130,9 +160,6 @@
            rounded-2xl border-[1.5px]
            py-[2px] pl-1.5 pr-2;
   }
-}
-
-@layer components {
   .home {
     @apply flex w-full max-xl:max-h-screen
            max-xl:overflow-y-scroll;
@@ -160,14 +187,30 @@
            shadow-[var(--shadow-profile)];
   }
 
-  .sidebar {
+   /* Sidebar */
+   .sidebar {
     @apply sticky top-0 hidden h-screen
            flex-col justify-between
-           border-r border-gray-200 bg-white
-           max-md:hidden xl:flex;
+           border-r border-gray-200
+           bg-white pt-8
+           max-md:hidden xl:flex
+           sm:p-4 xl:p-6 2xl:w-[355px];
+  }
+
+  .sidebar-logo {
+    @apply text-[26px] font-bold
+           text-black-1 max-xl:hidden;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3
+           rounded-lg py-1
+           justify-center xl:justify-start
+           md:p-3 2xl:p-4;
   }
 
   .sidebar-label {
-    @apply text-16 font-semibold text-gray-700;
+    @apply text-16 font-semibold
+           text-black-2 max-xl:hidden;
   }
 }
