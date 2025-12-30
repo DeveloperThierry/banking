@@ -9,7 +9,7 @@ const HeaderBox = ({
       <h1 className="header-box-title font-bold text-3xl">
         {title}
         {type === "greeting" && (
-          <span className="text-bankGradient">&nbsp;{user}</span>
+          <span className="text-bank-gradient">&nbsp;{user}</span>
         )}
       </h1>
       <p className="header-box-subtext">{subtext}</p>

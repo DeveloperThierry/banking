@@ -67,7 +67,15 @@
 }
 
 @layer components {
-  
+  /* Mobile nav */
+.mobilenav-sheet {
+  @apply flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto;
+}
+
+.mobilenav-sheet_close {
+  @apply flex gap-3 items-center p-4 rounded-lg w-full max-w-60;
+}
+
   /* Footer */
   .footer {
     @apply flex cursor-pointer
@@ -128,6 +136,10 @@
 
   .total-balance-amount {
     @apply flex-1 text-24 font-semibold text-gray-900 lg:text-30;
+  }
+
+  .total-balance-chart {
+    @apply flex size-full max-w-[100px] items-center sm:max-w-[120px];
   }
 
   /* Bank Card */
@@ -212,5 +224,8 @@
   .sidebar-label {
     @apply text-16 font-semibold
            text-black-2 max-xl:hidden;
+  }
+  .root-layout {
+    @apply flex h-16 items-center justify-between p-5 shadow-creditCard sm:p-8 md:hidden;
   }
 }
