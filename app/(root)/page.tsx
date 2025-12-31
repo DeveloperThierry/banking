@@ -1,24 +1,26 @@
 import HeaderBox from "@/components/HeaderBox";
 import RightSidebar from "@/components/RightSidebar";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 import React from "react";
 
-const Home = () => {
-  const loggedIn = {
-    $id: "user_1234567",
-    email: "user@example.com",
-    userId: "auth_12345",
-    dwollaCustomerUrl: "https://api.dwolla.com/customers/placeholder",
-    dwollaCustomerId: "dwolla_12345",
-    firstName: "John",
-    lastName: "Doe",
-    address1: "123 Main St",
-    city: "Anytown",
-    state: "CA",
-    postalCode: "12345",
-    dateOfBirth: "2000-01-01",
-    ssn: "1234" // last 4 digits placeholder
-  };
+const Home = async () => {
+  const loggedIn = await getLoggedInUser()
+  // const loggedIn = {
+  //   $id: "user_1234567",
+  //   email: "user@example.com",
+  //   userId: "auth_12345",
+  //   dwollaCustomerUrl: "https://api.dwolla.com/customers/placeholder",
+  //   dwollaCustomerId: "dwolla_12345",
+  //   firstName: "John",
+  //   lastName: "Doe",
+  //   address1: "123 Main St",
+  //   city: "Anytown",
+  //   state: "CA",
+  //   postalCode: "12345",
+  //   dateOfBirth: "2000-01-01",
+  //   ssn: "1234" // last 4 digits placeholder
+  // };
 
   const banks: Array<Bank & Account> = [
     {
@@ -73,7 +75,7 @@ const Home = () => {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstName || "Guest"}
+            user={loggedIn?.name || "Guest"}
             subtext="Access and manage your account and transactions efficiently."
           />
           <TotalBalanceBox

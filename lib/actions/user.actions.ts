@@ -5,12 +5,17 @@ import { createAdminClient, createSessionClient } from "../appwrite";
 import { cookies } from "next/headers";
 import { parseStringify } from "../utils";
 import { redirect } from "next/navigation";
+import { email } from "zod";
 
-export const signIn = async () => {
+export const signIn = async ({email, password}:signInProps) => {
+
   try {
-    //Muatte / Database ? Server Actions
+    const { account } = await createAdminClient();
+    const response = await account.createEmailPasswordSession(email, password)
+    return parseStringify(response)
   } catch (error) {
     console.error("Error signing in", error);
+    return null
   }
 };
 
@@ -40,7 +45,7 @@ export const signUp = async (userData: SignUpParams) => {
     return parseStringify(newUserAccount);
   } catch (error) {
     console.error("Error signing up", error);
-    throw error
+    return null
   }
 };
 
@@ -49,8 +54,23 @@ export const signUp = async (userData: SignUpParams) => {
 export async function getLoggedInUser() {
   try {
     const { account } = await createSessionClient();
-    return await account.get();
+    const user = await account.get();
+    return parseStringify(user)
   } catch (error) {
     return null;
   }
+}
+
+export const logoutAccount = async() => {
+  try{
+    const { account } = await createSessionClient();
+    (await cookies()).delete('appwrite-session')
+    await account.deleteSession('current');
+    // await account.deleteSessions();
+
+  }
+  catch(error){
+    return null
+  }
+
 }
