@@ -6,21 +6,6 @@ import React from "react";
 
 const Home = async () => {
   const loggedIn = await getLoggedInUser()
-  // const loggedIn = {
-  //   $id: "user_1234567",
-  //   email: "user@example.com",
-  //   userId: "auth_12345",
-  //   dwollaCustomerUrl: "https://api.dwolla.com/customers/placeholder",
-  //   dwollaCustomerId: "dwolla_12345",
-  //   firstName: "John",
-  //   lastName: "Doe",
-  //   address1: "123 Main St",
-  //   city: "Anytown",
-  //   state: "CA",
-  //   postalCode: "12345",
-  //   dateOfBirth: "2000-01-01",
-  //   ssn: "1234" // last 4 digits placeholder
-  // };
 
   const banks: Array<Bank & Account> = [
     {
