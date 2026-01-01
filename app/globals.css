@@ -323,6 +323,19 @@
 }
 
 
+/* PlaidLink */
+.plaidlink-primary {
+  @apply text-16 rounded-lg border border-bank-gradient bg-bank-gradient font-semibold text-white shadow-form;
+}
+
+.plaidlink-ghost {
+  @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:bg-white lg:justify-start;
+}
+
+.plaidlink-default {
+  @apply flex !justify-start cursor-pointer gap-3 rounded-lg !bg-transparent flex-row;
+}
+
 }
 
 
