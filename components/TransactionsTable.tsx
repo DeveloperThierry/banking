@@ -37,7 +37,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {transactions.map((transaction:Transaction) => {
+        {transactions && transactions.map((transaction:Transaction) => {
             const status = getTransactionStatus(new Date(transaction.date))
             const amount = formatAmount(transaction.amount)
             const isDebit = transaction.type == "debit"
