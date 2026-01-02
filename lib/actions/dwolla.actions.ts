@@ -3,10 +3,6 @@
 import { Client } from "dwolla-v2";
 
 
-console.log('Dwolla Env:', process.env.DWOLLA_ENV);
-console.log('Dwolla Key:', process.env.DWOLLA_KEY ? 'exists' : 'missing');
-console.log('Dwolla Secret:', process.env.DWOLLA_SECRET ? 'exists' : 'missing');
-
 const getEnvironment = (): "production" | "sandbox" => {
   const environment = process.env.DWOLLA_ENV as string;
 
