@@ -38,7 +38,7 @@ const Home = async ({searchParams}:SearchParamProps) => {
         page={currentPage}
         />
       </div>
-      <RightSidebar user={loggedIn} transactions={accounts?.transactions} banks={accountsData?.slice(0, 2)} />
+      <RightSidebar user={loggedIn} transactions={account?.transactions} banks={accountsData?.slice(0, 2)} />
     </section>
   );
 };
