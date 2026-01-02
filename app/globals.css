@@ -336,6 +336,27 @@
   @apply flex !justify-start cursor-pointer gap-3 rounded-lg !bg-transparent flex-row;
 }
 
+/* Recent Transactions */
+.recent-transactions {
+  @apply flex w-full flex-col gap-6;
+}
+
+.recent-transactions-label {
+  @apply text-20 md:text-24 font-semibold text-gray-900;
+}
+
+.recent-transactions-tablist {
+  @apply flex w-full flex-nowrap;
+}
+
+.view-all-btn {
+  @apply text-14 rounded-lg border border-gray-300 px-4 py-2.5 font-semibold text-gray-700;
+}
+
+.category-badge {
+  @apply flex-center truncate w-fit gap-1 rounded-2xl border-[1.5px] py-[2px] pl-1.5 pr-2;
+}
+
 }
 
 
