@@ -25,18 +25,26 @@ const dwollaClient = new Client({
 });
 
 // Create a Dwolla Funding Source using a Plaid Processor Token
-export const createFundingSource = async (
-  options: CreateFundingSourceOptions
-) => {
+export const createFundingSource = async (options: CreateFundingSourceOptions) => {
   try {
-    return await dwollaClient
-      .post(`customers/${options.customerId}/funding-sources`, {
+    const response = await dwollaClient.post(
+      `customers/${options.customerId}/funding-sources`,
+      {
         name: options.fundingSourceName,
         plaidToken: options.plaidToken,
-      })
-      .then((res) => res.headers.get("location"));
-  } catch (err) {
+        _links: options._links, 
+      }
+    );
+    return response.headers.get("location");
+  } catch (err: any) {
+    if (err.body?.code === "DuplicateResource") {
+      // If it exists, extract the link from the error body and return it
+      // so the Appwrite save can proceed!
+      console.log("Bank already linked to Dwolla. Continuing to Appwrite save...");
+      return err.body._links.about.href;
+    }
     console.error("Creating a Funding Source Failed: ", err);
+    throw err;
   }
 };
 
@@ -98,18 +106,18 @@ export const addFundingSource = async ({
   bankName,
 }: AddFundingSourceParams) => {
   try {
-    // create dwolla auth link
     const dwollaAuthLinks = await createOnDemandAuthorization();
 
-    // add funding source to the dwolla customer & get the funding source url
     const fundingSourceOptions = {
       customerId: dwollaCustomerId,
       fundingSourceName: bankName,
       plaidToken: processorToken,
       _links: dwollaAuthLinks,
     };
+    
+    // Ensure you are returning the result here!
     return await createFundingSource(fundingSourceOptions);
   } catch (err) {
-    console.error("Transfer fund failed: ", err);
+    console.error("Add Funding Source failed: ", err);
   }
 };
