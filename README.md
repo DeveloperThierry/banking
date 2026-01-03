@@ -1,9 +1,9 @@
 ![Screenshot](/public/views/view1.png)
 ![Screenshot](/public/views/view2.png)
-![Screenshot](/public/views/view3.jpg)
-![Screenshot](/public/views/view4.jpg)
-![Screenshot](/public/views/view5.jpg)
-![Screenshot](/public/views/view6.jpg)
+![Screenshot](/public/views/view3.png)
+![Screenshot](/public/views/view4.png)
+![Screenshot](/public/views/view5.png)
+![Screenshot](/public/views/view6.png)
 
 # Banking Finance Management
 
